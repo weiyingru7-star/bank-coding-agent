@@ -1,0 +1,11 @@
+{
+  "name": "@bank-agent/bank-transfer-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "test:requirement": "node --test requirements/*.test.ts"
+  }
+}
+

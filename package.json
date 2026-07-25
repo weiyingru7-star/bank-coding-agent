@@ -1,0 +1,23 @@
+{
+  "name": "bank-coding-agent",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "demo:approval": "node examples/run-approval-demo.ts",
+    "demo:model-gateway": "node examples/run-model-gateway-demo.ts",
+    "demo:prompt": "node examples/run-prompt-demo.ts",
+    "demo:retrieval": "node examples/run-retrieval-demo.ts",
+    "demo:runtime": "node examples/run-runtime-demo.ts",
+    "demo:scheduler": "node examples/run-scheduler-demo.ts",
+    "demo:server": "node examples/run-server-demo.ts",
+    "test:bank": "pnpm --filter @bank-agent/bank-transfer-demo test",
+    "test:model": "pnpm --filter @bank-agent/model-gateway test",
+    "test:prompt": "pnpm --filter @bank-agent/prompt-management test",
+    "test:retrieval": "pnpm --filter @bank-agent/retrieval test",
+    "test:requirement": "pnpm --filter @bank-agent/bank-transfer-demo test:requirement",
+    "test:runtime": "pnpm --filter @bank-agent/agent-runtime test",
+    "test:scheduler": "pnpm --filter @bank-agent/task-scheduler test",
+    "test:server": "pnpm --filter @bank-agent/agent-server test"
+  }
+}

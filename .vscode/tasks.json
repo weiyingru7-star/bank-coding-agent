@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-bank-agent-extension",
+      "type": "shell",
+      "command": "pnpm --filter bank-coding-agent-vscode build",
+      "problemMatcher": []
+    }
+  ]
+}
+

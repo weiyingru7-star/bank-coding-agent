@@ -1,0 +1,79 @@
+{
+  "name": "bank-coding-agent-vscode",
+  "displayName": "Bank Coding Agent",
+  "description": "A safe, approval-aware Coding Agent demo for banking development.",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "main": "./dist/extension.cjs",
+  "activationEvents": [
+    "onCommand:bankAgent.startTask",
+    "onCommand:bankAgent.showProposal",
+    "onCommand:bankAgent.approveTask",
+    "onCommand:bankAgent.cancelTask"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "bankAgent.startTask",
+        "title": "Bank Agent: 创建编码任务"
+      },
+      {
+        "command": "bankAgent.showProposal",
+        "title": "Bank Agent: 查看补丁 Diff"
+      },
+      {
+        "command": "bankAgent.approveTask",
+        "title": "Bank Agent: 审批当前任务"
+      },
+      {
+        "command": "bankAgent.cancelTask",
+        "title": "Bank Agent: 取消当前任务"
+      }
+    ],
+    "configuration": {
+      "title": "Bank Coding Agent",
+      "properties": {
+        "bankAgent.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8787",
+          "description": "Agent Server 地址。"
+        },
+        "bankAgent.workspaceId": {
+          "type": "string",
+          "default": "bank-transfer-demo",
+          "description": "由服务端注册的工作区 ID。"
+        },
+        "bankAgent.demoUserId": {
+          "type": "string",
+          "default": "developer-001",
+          "description": "仅用于本地演示。生产环境由 SSO Token 解析用户身份。"
+        },
+        "bankAgent.demoUserRole": {
+          "type": "string",
+          "enum": [
+            "DEVELOPER",
+            "REVIEWER"
+          ],
+          "default": "DEVELOPER",
+          "description": "仅用于本地演示。生产环境禁止由客户端声明角色。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --platform=node --format=cjs --external:vscode --outfile=dist/extension.cjs",
+    "dev": "esbuild src/extension.ts --bundle --platform=node --format=cjs --external:vscode --outfile=dist/extension.cjs --watch",
+    "check": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "@types/vscode": "1.125.0",
+    "esbuild": "0.28.1",
+    "typescript": "7.0.2"
+  }
+}
